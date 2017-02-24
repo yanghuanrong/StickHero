@@ -1,0 +1,102 @@
+// 初始化浏览器样式
+body,h1,h2,h3,h4,h5,h6,hr,p,blockquote,dl,dt,dd,ul,ol,li,pre,form,fieldset,legend,button,input,textarea,th,td{ margin:0; padding:0; }
+//h1, h2, h3, h4, h5, h6{ font-size:100%; }
+body,html{ height: 100%;}
+address, cite, dfn, em, var { font-style:normal; }
+code, kbd, pre, samp { font-family:couriernew, courier, monospace; }
+small{ font-size:12px; }
+ul, ol { list-style:none; }
+a { text-decoration:none; color: inherit;}
+a:hover { text-decoration:none; color: inherit; }
+sup { vertical-align:text-top; }
+sub{ vertical-align:text-bottom; }
+legend { color:#000; }
+fieldset, img { border:0; }
+button, input, select, textarea { font-size:100%; outline: none; }
+table { border-collapse:collapse; border-spacing:0; }
+body *{ -webkit-text-size-adjust: 100%;-webkit-user-select: none;} //解决ios文字被选中，android不兼容
+//a,input,button {-webkit-tap-highlight-color: rgba(0, 0, 0, 0);} //移动端默认点击色块处理
+input,button {-webkit-appearance: none;border-radius: 0;} //初始化移动端默认渲染样式
+
+@r:50rem; //设计稿640   640/15得到这个根节点   15在js中定义的
+@minColor:#d0272d; //定义主色调
+@lineColor: #d9d9d9;
+body{width: 100%; min-width: 320px; max-width: 640px; background-color: #333; margin: 0 auto; font-family: arial,"微软雅黑";}
+
+body{ width: 100%; max-width: 640px; min-width: 320px; position: relative; }
+.wrap{width:100%; height:100%; top: 0; left: 0; overflow:hidden;position:absolute}
+
+#GameContent{width:200%;height:100%;position:relative;left:0;transform:scale(3);transform-origin:-6% 70%; z-index: 6;}
+#leftBar,#centBar,#rightBar{
+    position:absolute;left:0;bottom:0;width:60px;height:180px; padding: 0 8/@r; box-sizing: border-box;
+    span{
+        display: block; width: 100%; background: #30436b; height: 180px;
+        &:after{
+            content:"";  height: 32/@r; background: #213255; width: 100%; display: block
+        }
+    }
+    &:after{content:""; position: absolute; width: 100%; height: 17/@r; background: #30436b; top: 0; left: 0; display: block}
+}
+#hero{width:30px;height:100px;background:red;position:absolute;left:0;bottom:180px; background: url(../images/hero.png) no-repeat right bottom; background-size:20px auto;}
+#stick{width:0;height:1px;background:#2771d6;position:absolute;left:30px;bottom:180px;transform-origin:0 2px;transform:rotate(-90deg); border-top: 1px solid #5096f6;}
+#score{position:absolute;top:10px;right:10px;z-index:5; color: #FFF; display: none;}
+#restart{position:absolute;top:40px;left:30px;right:30px; border-radius:10px;text-align:center;padding:20px;box-sizing:border-box;z-index:5;display:none; z-index: 9;}
+#OneStart{position:absolute;top:40px;left:30px;right:30px;height:200px;z-index:10;text-align:center}
+#kill{ width: 30px; position: absolute; bottom: -40px; background: url(../images/kill.png); background-size:cover; z-index: 20; height: 38px; left: 0;}
+#kill.kill{ animation: kill 1.5s 1s linear; }
+.Btn{ background: none; border: 2px solid #000; border-radius: 10px; padding: 2px 10px; margin-top: 15px; cursor: pointer;}
+
+.gameBG{
+    position: absolute; top: 0; right: 0; left: 0; bottom: 0; transform: none; transform-origin: center 60%; transition: 2s;
+    background: url(../images/bg.jpg) no-repeat; background-size: cover; z-index: 1;
+    .sun{ 
+        width: 1308/@r; height: 1181/@r; position: absolute; top: -20%; right: -40%; 
+        div{ width: 100%; height: 100%; position: absolute; background-repeat:no-repeat; background-size:100% 100%; animation:sun 16s linear infinite; }
+        div:nth-child(1){ background-image: url(../images/matr1.png); z-index: 1; opacity: 0.04; animation:sun 14s linear infinite; }
+        div:nth-child(2){ background-image: url(../images/matr2.png); z-index: 2;opacity: 0.06; animation:sun 12s linear infinite; }
+        div:nth-child(3){ background-image: url(../images/matr3.png); z-index: 3;opacity: 0.08; animation:sun 10s linear infinite; }
+        div:nth-child(4){ background-image: url(../images/matr4.png); z-index: 4;opacity: 0.10; animation:sun 8s linear infinite; }
+        div:nth-child(5){ background-image: url(../images/matr5.png); z-index: 5;opacity: 0.12; animation:sun 6s linear infinite; }
+        div:nth-child(6){ background-image: url(../images/matr6.png); z-index: 6;opacity: 0.14; animation:sun 4s linear infinite; }
+        div:nth-child(7){ background-image: url(../images/matr7.png); z-index: 7;opacity: 0.16; animation:sun 2s linear infinite; }
+        div:nth-child(8){ background-image: url(../images/matr8.png); z-index: 8;}
+    }
+}
+.cloud{position: absolute; top: 0; right: 0; height: 700/@r; width: 100%; z-index: 2;
+    div{ width: 269/@r; height: 126/@r; background: url(../images/cloud.png) no-repeat center center; background-size: 100% 100%; position: absolute;}
+    div:nth-child(1){bottom: 0px; left: 40%;}
+    div:nth-child(2){bottom: 20px; left: 60%; transform: scale(0.7); opacity: 0.9;}
+    div:nth-child(3){bottom: 10px; left: 0; transform: scale(0.9);}
+    div:nth-child(4){bottom: 30px; left: 0; transform: scale(0.5); opacity: 0.7;}
+    div:nth-child(5){bottom: 40px; transform: scale(0.3); opacity: 0.3; left: 20%;}
+}
+
+.city{
+    position: absolute; bottom: 0; left: 0; right: 0; height: 100%; transform-style: preserve-3d;
+    div{ position: absolute;}
+    div:nth-child(1){ width:1129*2/@r; height:565/@r; background: url(../images/ts1.png) repeat-x 0 bottom; background-size:1129/@r; height: 565/@r; bottom: 0; z-index: 1; animation: city 20s linear infinite; 
+}
+    div:nth-child(2){ width:1008*2/@r; height:455/@r; background: url(../images/ts2.png) repeat-x 0 bottom; background-size:1008/@r; height: 455/@r; bottom: 0; z-index: 2; animation: city 15s linear infinite; 
+}
+    div:nth-child(3){ width:1069*2/@r; height:421/@r; background: url(../images/ts3.png) repeat-x 0 bottom; background-size:1069/@r; height: 421/@r; bottom: 0; z-index: 3;animation: city 10s linear infinite;
+}
+}
+
+@keyframes city{
+    from{ background-position:100% bottom;}
+    to{ background-position:0% bottom; }
+}
+
+
+@keyframes sun{
+    from{ transform: rotate(0deg); }
+    to{ transform: rotate(360deg);}
+}
+@keyframes kill{
+    0%{ transform: translateX(-10px);}
+    20%{ transform: translateX(10px);}
+    40%{ transform: translateX(-10px);}
+    60%{ transform: translateX(10px);}
+    80%{ transform: translateX(0px); opacity: 1;}
+    100%{ transform: translateX(0px); opacity: 0; bottom: 40px;}
+}
