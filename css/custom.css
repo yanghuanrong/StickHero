@@ -118,8 +118,6 @@ body {
   height: 100%;
   position: relative;
   left: 0;
-  transform: scale(3);
-  transform-origin: -6% 70%;
   z-index: 6;
 }
 #leftBar,
@@ -165,12 +163,20 @@ body {
 #hero {
   width: 30px;
   height: 100px;
-  background: red;
   position: absolute;
   left: 0;
   bottom: 180px;
-  background: url(../images/hero.png) no-repeat right bottom;
-  background-size: 20px auto;
+}
+#hero span {
+  transform: scale(0.3);
+  position: absolute;
+  bottom: -48px;
+  left: -42px;
+  width: 108px;
+  height: 135px;
+  display: block;
+  background: url(../images/hero.png);
+  animation: hero 0.7s steps(1, start) infinite;
 }
 #stick {
   width: 0;
@@ -213,6 +219,9 @@ body {
   z-index: 10;
   text-align: center;
 }
+#OneStart h1 img {
+  width: 14rem;
+}
 #kill {
   width: 30px;
   position: absolute;
@@ -227,12 +236,11 @@ body {
   animation: kill 1.5s 1s linear;
 }
 .Btn {
-  background: none;
-  border: 2px solid #000;
-  border-radius: 10px;
-  padding: 2px 10px;
   margin-top: 15px;
   cursor: pointer;
+}
+.Btn img {
+  width: 7rem;
 }
 .gameBG {
   position: absolute;
@@ -394,6 +402,41 @@ body {
   }
   to {
     background-position: 0% bottom;
+  }
+}
+@keyframes hero {
+  0 {
+    background-position: 0 0;
+  }
+  10% {
+    background-position: -108px 0;
+  }
+  20% {
+    background-position: -216px 0;
+  }
+  30% {
+    background-position: -324px 0;
+  }
+  40% {
+    background-position: -432px 0;
+  }
+  50% {
+    background-position: -540px 0;
+  }
+  60% {
+    background-position: -648px 0;
+  }
+  70% {
+    background-position: -756px 0;
+  }
+  80% {
+    background-position: -864px 0;
+  }
+  90% {
+    background-position: -972px 0;
+  }
+  100% {
+    background-position: -1080px 0;
   }
 }
 @keyframes sun {
