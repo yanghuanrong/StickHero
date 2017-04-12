@@ -27,7 +27,7 @@ body{ width: 100%; max-width: 640px; min-width: 320px; position: relative; }
 .wrap{width:100%; height:100%; top: 0; left: 0; overflow:hidden;position:absolute}
 
 #GameContent{width:200%;height:100%;position:relative;left:0;z-index: 6;
-//transform:scale(3);transform-origin:-6% 70%; 
+transform:scale(3);transform-origin:-6% 70%; 
 }
 #leftBar,#centBar,#rightBar{
     position:absolute;left:0;bottom:0;width:60px;height:180px; padding: 0 8/@r; box-sizing: border-box;
@@ -49,14 +49,15 @@ body{ width: 100%; max-width: 640px; min-width: 320px; position: relative; }
     }
 }
 #stick{width:0;height:1px;background:#2771d6;position:absolute;left:30px;bottom:180px;transform-origin:0 2px;transform:rotate(-90deg); border-top: 1px solid #5096f6;}
-#score{position:absolute;top:10px;right:10px;z-index:5; color: #FFF; display: none;}
-#restart{position:absolute;top:40px;left:30px;right:30px; border-radius:10px;text-align:center;padding:20px;box-sizing:border-box;z-index:5;display:none; z-index: 9;}
-#OneStart{position:absolute;top:40px;left:30px;right:30px;height:200px;z-index:10;text-align:center;
-    h1 img {width: 14rem;}
+#score{position:absolute;top:10px;left:10px;z-index:5; color: #FFF; display: none;}
+#restart{position:absolute;top:40px;left:30px;right:30px; border-radius:10px;text-align:center;padding:20px;box-sizing:border-box;z-index:5;display:none; z-index: 9; background: #93ddfe; color: #FFF; border: 2px solid #40abd9; box-shadow: 0 5px 5px rgba(0,0,0,.2);}
+#OneStart{position:absolute;top:70px;left:30px;right:30px;height:200px;z-index:10;text-align:center;
+    h1 img {width: 17rem;}
 }
+#restartBtn{ margin-top: 15px;}
 #kill{ width: 30px; position: absolute; bottom: -40px; background: url(../images/kill.png); background-size:cover; z-index: 20; height: 38px; left: 0;}
 #kill.kill{ animation: kill 1.5s 1s linear; }
-.Btn { margin-top: 15px; cursor: pointer;
+.Btn { cursor: pointer;
     img {width: 7rem;}
 }
 .gameBG{
@@ -77,11 +78,14 @@ body{ width: 100%; max-width: 640px; min-width: 320px; position: relative; }
 }
 .cloud{position: absolute; top: 0; right: 0; height: 700/@r; width: 100%; z-index: 2;
     div{ width: 269/@r; height: 126/@r; background: url(../images/cloud.png) no-repeat center center; background-size: 100% 100%; position: absolute;}
-    div:nth-child(1){bottom: 0px; left: 40%;}
-    div:nth-child(2){bottom: 20px; left: 60%; transform: scale(0.7); opacity: 0.9;}
-    div:nth-child(3){bottom: 10px; left: 0; transform: scale(0.9);}
-    div:nth-child(4){bottom: 30px; left: 0; transform: scale(0.5); opacity: 0.7;}
-    div:nth-child(5){bottom: 40px; transform: scale(0.3); opacity: 0.3; left: 20%;}
+    div:nth-child(1){bottom: 0px; left: 40%; z-index: 8; animation: cloud1 10s linear infinite; }
+    div:nth-child(2){bottom: 20px; left: 60%;z-index: 7; transform: scale(0.7); opacity: 0.9; animation: cloud1 20s linear infinite;}
+    div:nth-child(3){bottom: 10px; left: -100%;z-index: 6; transform: scale(0.9); animation: cloud1 20s linear 4s infinite;}
+    div:nth-child(4){bottom: 30px; left: -100%;z-index: 5; transform: scale(0.5); opacity: 0.7; animation: cloud1 50s linear 4s infinite;}
+    div:nth-child(5){bottom: 40px; transform: scale(0.3);z-index: 4; opacity: 0.3; left: 35%; animation: cloud1 130s linear infinite;}
+    div:nth-child(6){bottom: 30px; transform: scale(0.4);z-index: 3; opacity: 0.3; left: -100%;  animation: cloud1 120s 2s linear infinite;}
+    div:nth-child(7){bottom: 50px; transform: scale(0.6);z-index: 2; animation: cloud1 80s 5s linear infinite; opacity: 0.3; left: -100%;}
+    div:nth-child(8){bottom: 45px; transform: scale(0.4);z-index: 1; opacity: 0.3; left: 80%; animation: cloud1 90s linear infinite;}
 }
 
 .city{
@@ -94,6 +98,12 @@ body{ width: 100%; max-width: 640px; min-width: 320px; position: relative; }
     div:nth-child(3){ width:1069*2/@r; height:421/@r; background: url(../images/ts3.png) repeat-x 0 bottom; background-size:1069/@r; height: 421/@r; bottom: 0; z-index: 3;animation: city 10s linear infinite;
 }
 }
+
+@keyframes cloud1{
+    0%{ left:100%;}
+    100%{ left:-100%;}
+}
+
 
 @keyframes city{
     from{ background-position:100% bottom;}
@@ -113,8 +123,8 @@ body{ width: 100%; max-width: 640px; min-width: 320px; position: relative; }
     100%{background-position:-1080px 0;}
 }
 @keyframes sun{
-    from{ transform: rotate(0deg); }
-    to{ transform: rotate(360deg);}
+    from{ transform: rotate(0); }
+    to{ transform: rotate(360deg); }
 }
 @keyframes kill{
     0%{ transform: translateX(-10px);}

@@ -38,8 +38,8 @@ OneStartBtn.addEventListener('touchstart', function() {
 	OneStart.style.display = 'none';
 	score.style.display = 'block';
 	cloud.style.webkitTransform = 'none'
-//	GameContent.style.webkitTransition = '1.5s';
-//	gameBG.style.webkitTransform = 'none'
+	GameContent.style.webkitTransition = '1.5s';
+	gameBG.style.webkitTransform = 'none'
 	GameContent.style.webkitTransform = 'initial';
 	GameContent.style.webkitTransformOrigin = 'initial';
 	setTimeout(function() {

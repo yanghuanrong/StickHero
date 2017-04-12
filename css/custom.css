@@ -119,6 +119,8 @@ body {
   position: relative;
   left: 0;
   z-index: 6;
+  transform: scale(3);
+  transform-origin: -6% 70%;
 }
 #leftBar,
 #centBar,
@@ -192,7 +194,7 @@ body {
 #score {
   position: absolute;
   top: 10px;
-  right: 10px;
+  left: 10px;
   z-index: 5;
   color: #FFF;
   display: none;
@@ -209,10 +211,14 @@ body {
   z-index: 5;
   display: none;
   z-index: 9;
+  background: #93ddfe;
+  color: #FFF;
+  border: 2px solid #40abd9;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
 }
 #OneStart {
   position: absolute;
-  top: 40px;
+  top: 70px;
   left: 30px;
   right: 30px;
   height: 200px;
@@ -220,7 +226,10 @@ body {
   text-align: center;
 }
 #OneStart h1 img {
-  width: 14rem;
+  width: 17rem;
+}
+#restartBtn {
+  margin-top: 15px;
 }
 #kill {
   width: 30px;
@@ -236,7 +245,6 @@ body {
   animation: kill 1.5s 1s linear;
 }
 .Btn {
-  margin-top: 15px;
   cursor: pointer;
 }
 .Btn img {
@@ -334,29 +342,63 @@ body {
 .cloud div:nth-child(1) {
   bottom: 0px;
   left: 40%;
+  z-index: 8;
+  animation: cloud1 10s linear infinite;
 }
 .cloud div:nth-child(2) {
   bottom: 20px;
   left: 60%;
+  z-index: 7;
   transform: scale(0.7);
   opacity: 0.9;
+  animation: cloud1 20s linear infinite;
 }
 .cloud div:nth-child(3) {
   bottom: 10px;
-  left: 0;
+  left: -100%;
+  z-index: 6;
   transform: scale(0.9);
+  animation: cloud1 20s linear 4s infinite;
 }
 .cloud div:nth-child(4) {
   bottom: 30px;
-  left: 0;
+  left: -100%;
+  z-index: 5;
   transform: scale(0.5);
   opacity: 0.7;
+  animation: cloud1 50s linear 4s infinite;
 }
 .cloud div:nth-child(5) {
   bottom: 40px;
   transform: scale(0.3);
+  z-index: 4;
   opacity: 0.3;
-  left: 20%;
+  left: 35%;
+  animation: cloud1 130s linear infinite;
+}
+.cloud div:nth-child(6) {
+  bottom: 30px;
+  transform: scale(0.4);
+  z-index: 3;
+  opacity: 0.3;
+  left: -100%;
+  animation: cloud1 120s 2s linear infinite;
+}
+.cloud div:nth-child(7) {
+  bottom: 50px;
+  transform: scale(0.6);
+  z-index: 2;
+  animation: cloud1 80s 5s linear infinite;
+  opacity: 0.3;
+  left: -100%;
+}
+.cloud div:nth-child(8) {
+  bottom: 45px;
+  transform: scale(0.4);
+  z-index: 1;
+  opacity: 0.3;
+  left: 80%;
+  animation: cloud1 90s linear infinite;
 }
 .city {
   position: absolute;
@@ -395,6 +437,14 @@ body {
   bottom: 0;
   z-index: 3;
   animation: city 10s linear infinite;
+}
+@keyframes cloud1 {
+  0% {
+    left: 100%;
+  }
+  100% {
+    left: -100%;
+  }
 }
 @keyframes city {
   from {
@@ -441,7 +491,7 @@ body {
 }
 @keyframes sun {
   from {
-    transform: rotate(0deg);
+    transform: rotate(0);
   }
   to {
     transform: rotate(360deg);
